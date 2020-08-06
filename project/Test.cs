@@ -33,7 +33,7 @@ namespace project
             {
                 Assert.Equals(_expected,_discoverMoreText);
             }
-
+            web.QuitBrowser();
         }
         //tets log on by asserting presence of textboxes username and password
         [Test,Order(2)]
@@ -55,10 +55,7 @@ namespace project
                 Assert.Pass();
             }
 
-
-
-
-
+            web.QuitBrowser();
 
         }
 

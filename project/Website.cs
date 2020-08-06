@@ -41,7 +41,10 @@ namespace project
             //click on logon
             driver.FindElement(By.XPath("//*[@id='gloNavUnauth']/nav[1]/div/div/ul[2]/li[2]/a[1]")).Click();
         }
-        
+        public void  QuitBrowser()
+        {
+            driver.Quit();
+        }
 
     }
 }
