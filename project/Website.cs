@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
+using System.Net.WebSockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -13,36 +15,43 @@ namespace project
 {
     class Website
     {
+        //global driver;
         public static IWebDriver driver;
         public void LuanchBrowser()
         {
+            //intialising driver with chrome
             driver = new ChromeDriver();
+
+            //maximise window          
             driver.Manage().Window.Maximize();
+
             //launching browser nad navigate to website
             driver.Navigate().GoToUrl("https://www.commbank.com.au/");
 
         }
         public void NavigateToTravel()
         {
-            //click on Travel
+           
+            Thread.Sleep(5000);
+            //click on Travel           
             driver.FindElement(By.XPath("//*[@id='products']/div/div/div[1]/div[8]/div/a/div[2]/div")).Click();
-            var element = driver.FindElement(By.XPath("//*[@id='products']/div/div/div[1]/div[8]/div/a/div[2]/div")) ;
-            Actions actions = new Actions(driver);
-            actions.MoveToElement(element);
-            actions.Perform();
-            //click on Tell me more/discover more
-            driver.FindElement(By.LinkText("Discover more"));
             
-
-
+            Thread.Sleep(3000);
+            //click on Tell me more /more discover
+            driver.FindElement(By.XPath("//*[@id='products']/div/div[1]/div/div/div[2]/div[1]/div/div/div[3]/p/a")).Click();
+          
+       
         }
-        public void LogOn()
+        public void VerifyCurrencyConverter()
         {
-            //click on logon
-            driver.FindElement(By.XPath("//*[@id='gloNavUnauth']/nav[1]/div/div/ul[2]/li[2]/a[1]")).Click();
+            //click on currency converter tab
+            driver.FindElement(By.LinkText("Currency converter")).Click(); 
+
         }
+       
         public void  QuitBrowser()
         {
+            //closes all browsers opened by selenium
             driver.Quit();
         }
 
